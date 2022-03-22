@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style1.css">
+  <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+  <link rel="icon" type="image/png" sizes="16x16" href="static/images/favicon-96x96.png">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+
+    <title></title>
+</head>
+<body>
+
+    
+<!--NAVBAR START-->
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+          <img src="/static/images/icon.png" alt="" width="50" height="50">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="navbar-brand" href="/">🏡 Home
+                  <span class="sr-only">(current)</span>
+                </a>
+          </li>
+          <li class="nav-item">
+            <a class="navbar-brand" href="writes">📚 Writes</a>
+          </li>
+         <li class="nav-item dropdown">
+        <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 🚀 Projects</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="">📋 item1</a>
+          <a class="dropdown-item" href=""> 📋  item 2</a>
+        
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/">👽 Comming soon</a>
+        </div>
+      </li>
+          <li class="nav-item dropdown">
+        <a class="navbar-brand dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 🏷️ Sign In</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" data-toggle="modal" role="button" id="Loginbutton" href="#LoginModal">🔐 Login</a>  
+          <a class="dropdown-item" data-toggle="modal" role="button" id="Registrationbutton" href="#RegistrationModal"> 🔐 Registration</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="admin">🧔🏻 Admin</a>
+        </div>
+      </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!--NAVBAR END-->
+
+
+ <!--Contact form start-->
+ <div id="mybutton">
+  <a  class="feedback" href="#myModal"  data-toggle="modal" role="button" >🤙 Contact me </a>
+  </div>
+  <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+
+
+          <h2 class="lead" id="myModalLabel">Hire me as Python developer. you can see my work on my Github profile. </h3>
+        </div>
+        <div class="modal-body">
+          <form id="contact" method="post" class="form" role="form" action="/">
+             {% csrf_token %}
+            <div class="form-group"><label>Name</label><input class="form-control required" placeholder="Your name" data-placement="top" data-trigger="manual" data-content="Must be at least 3 characters long, and must only contain letters." type="text" name="name" required></div>
+            <div class="form-group"><label>Message</label><textarea class="form-control" placeholder="Your message here.." data-placement="top" data-trigger="manual" name="msg" required></textarea></div>
+            <div class="form-group"><label>E-Mail</label><input class="form-control email" placeholder="email@you.com (so that we can contact you)" data-placement="top" data-trigger="manual" data-content="Must be a valid e-mail address (user@gmail.com)" type="text" name="email" required></div>
+
+            <div class="form-group"><button type="submit" class="btn btn-success pull-right">Send It!</button> <p class="help-block pull-left text-danger hide" id="form-error">  The form is not valid. </p></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!--Contact form end-->
+
+  <!--Registration form start-->
+  <div class="modal fade" id="RegistrationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title" id="exampleModalLabel">Create Account</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <form id="Registration" method="post" class="form" role="form" action="/signup">
+             {% csrf_token %}
+          <div class="modal-body">
+          <div class="form-group">
+              <label for="email1">Username</label>
+              <input type="text" class="form-control" name="username" id="fullname" aria-describedby="emailHelp" placeholder="Enter Username" required>
+            </div>
+            <div class="form-group">
+              <label for="email1">First name</label>
+              <input type="text" class="form-control" name="fname" id="fname" aria-describedby="emailHelp" placeholder="Enter First name" required>
+            </div>
+            <div class="form-group">
+              <label for="email1">Last name</label>
+              <input type="text" class="form-control" name="lname" id="lname" aria-describedby="emailHelp" placeholder="Enter Last name" required>
+            </div>
+            <div class="form-group">
+              <label for="email1">Email address</label>
+              <input type="email" class="form-control" name="email" id="email1" aria-describedby="emailHelp" placeholder="Enter email" required>
+              <small id="emailHelp" class="form-text text-muted">Your information is safe with us.</small>
+            </div>
+            <div class="form-group">
+              <label for="password1">Password</label>
+              <input type="password" class="form-control" name="password1" id="password1" placeholder="Password" required>
+            </div>
+          </div>
+          <div class="modal-footer border-top-0 d-flex justify-content-center">
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--Registration form end-->
+
+
+  <!--login form start-->
+  <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <form id="login" method="post" class="form" role="form" action="/login">
+             {% csrf_token %}
+          <div class="modal-body">
+          <div class="form-group">
+              <label for="email1">Username</label>
+              <input type="text" class="form-control" name="loginusername" id="loginfullname" aria-describedby="emailHelp" placeholder="Enter Username" required>
+            </div>
+
+            <div class="form-group">
+              <label for="password1">Password</label>
+              <input type="password" class="form-control" name="loginpassword" id="loginpassword1" placeholder="Password" required>
+            </div>
+          </div>
+          <div class="modal-footer border-top-0 d-flex justify-content-center">
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!--login form end-->
+
+
+
+
+
+
+
+
+
+
+  
+
+    
+  
+  
+    {% block content %}
+
+
+
+    {% endblock %}
+  
+    <footer class="py-4 bg-dark flex-shrink-0">
+        <div class="container text-center">
+        <div class="icon-bar">
+        <a href="https://github.com/shantanu1905"><img alt="Github" src="static/images/github.svg" width="30" height="30" ></a> 
+        <a href="https://www.linkedin.com/in/shantanu-nimkar-4a50961a6/"><img  alt="linkedin" src="static/images/linkedinn.svg" width="30" height="30"></a> 
+        <a href="#"><img alt="twitter" src="static/images/twitter.svg" width="30" height="30" ></a> 
+        <a href="#"><img alt="spotify" src="static/images/spotify1.svg" width="30" height="30" ></a> 
+      </div>
+      <p class="lead"  style="font-size:20px ;color:white" >Made with ❤ by Shantanu Nimkar 😉 </p> 
+      <p class="lead"  style="font-size:15px ;color:gray" >© 2020-2021 </p>
+      </footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+</body>
+</html>
